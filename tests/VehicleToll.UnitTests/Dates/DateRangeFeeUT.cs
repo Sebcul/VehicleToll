@@ -5,7 +5,7 @@ namespace VehicleToll.UnitTests.Dates;
 
 public class DateRangeFeeUT
 {
-    
+
     [Fact]
     public void TollFeeRanges_Should_HaveNineEntries()
     {
@@ -15,7 +15,7 @@ public class DateRangeFeeUT
         //Assert
         Assert.Equal(9, count);
     }
-    
+
     [Theory]
     [InlineData(0, "06:29:59", true)]
     [InlineData(0, "06:30:00", false)]
@@ -38,7 +38,7 @@ public class DateRangeFeeUT
         //Assert
         Assert.Equal(expected, result);
     }
-    
+
     [Theory]
     [InlineData(0, "06:15:00", 8)]
     [InlineData(1, "06:45:00", 13)]
