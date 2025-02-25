@@ -142,6 +142,30 @@ public class TollCalculatorUT
         // Assert
         Assert.Equal(13, fee);
     }
+    
+    [Fact]
+    public void GetTollFee_Daily_Should_GroupTollFeesWithin60MinutesForAllDay()
+    {
+        // Arrange
+        var vehicle = new Car();
+
+        var date1 = new DateTime(_year, 1, 10, 6, 15, 0, 0);
+        var date2 = new DateTime(_year, 1, 10, 6, 45, 0, 0);
+        var date3 = new DateTime(_year, 1, 10, 8, 15, 0, 0);
+        var date4 = new DateTime(_year, 1, 10, 8, 45, 0, 0);
+        var date5 = new DateTime(_year, 1, 10, 16, 45, 0, 0);
+        var date6 = new DateTime(_year, 1, 10, 16, 30, 0, 0);
+        var date7 = new DateTime(_year, 1, 10, 17, 10, 0, 0);
+        var date8 = new DateTime(_year, 1, 10, 21, 10, 0, 0);
+
+        var dates = new[] { date1, date2, date3, date4, date5, date6, date7, date8 };
+
+        // Act
+        var fee = _sutCalculator.GetTollFee(vehicle, dates);
+
+        // Assert
+        Assert.Equal(44, fee);
+    }
 
     [Fact]
     public void GetTollFee_Daily_ShouldNot_GroupTollFeesOver60Minutes()

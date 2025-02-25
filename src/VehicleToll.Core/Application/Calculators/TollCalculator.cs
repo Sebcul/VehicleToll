@@ -1,4 +1,5 @@
-﻿using VehicleToll.Core.Application.Dates;
+﻿using System.Diagnostics.CodeAnalysis;
+using VehicleToll.Core.Application.Dates;
 using VehicleToll.Core.Domain.Abstractions;
 
 namespace VehicleToll.Core.Application.Calculators;
@@ -17,41 +18,52 @@ public class TollCalculator
 
     public int GetTollFee(IVehicle vehicle, DateTime[] dates)
     {
-        var intervalStart = dates[0];
-        var totalFee = 0;
+        if (dates.Length == 0)
+        {
+            return 0;
+        }
+
+        Array.Sort(dates);
+
+        int dailyFee = 0;
+        DateTime? intervalStart = null;
+        int currentMaxFeeInInterval = 0;
 
         foreach (var date in dates)
         {
-            int nextFee = GetTollFee(vehicle, date);
-            int tempFee = GetTollFee(vehicle, intervalStart);
-
-            var minutesDifferenceBetweenPasses = (date - intervalStart).TotalMinutes;
-
-            if (minutesDifferenceBetweenPasses <= TollIntervalMinutes)
+            int currentFee = GetTollFee(vehicle, date);
+            if (currentFee == 0)
             {
-                if (totalFee > 0)
-                {
-                    totalFee -= tempFee;
-                }
+                continue;
+            }
 
-                if (nextFee >= tempFee)
+            if (intervalStart == null)
+            {
+                intervalStart = date;
+                currentMaxFeeInInterval = currentFee;
+            }
+            else if (IsIn60MinutesInterval(intervalStart.Value, date))
+            {
+                if (currentFee > currentMaxFeeInInterval)
                 {
-                    tempFee = nextFee;
+                    currentMaxFeeInInterval = currentFee;
                 }
-                totalFee += tempFee;
             }
             else
             {
-                totalFee += nextFee;
+                dailyFee += currentMaxFeeInInterval;
+
+                intervalStart = date;
+                currentMaxFeeInInterval = currentFee;
             }
         }
 
-        if (totalFee > DailyMaxFee)
+        if (intervalStart != null)
         {
-            totalFee = DailyMaxFee;
+            dailyFee += currentMaxFeeInInterval;
         }
 
-        return totalFee;
+        return dailyFee > DailyMaxFee ? DailyMaxFee : dailyFee;
     }
 
     public int GetTollFee(IVehicle vehicle, DateTime date)
@@ -63,5 +75,10 @@ public class TollCalculator
 
         var dateRangeFee = DateRangeFee.TollFeeRanges.FirstOrDefault(x => x.Contains(date.TimeOfDay));
         return dateRangeFee?.Fee ?? 0;
+    }
+    
+    private static bool IsIn60MinutesInterval(DateTime intervalStart, DateTime date)
+    {
+        return (date - intervalStart).TotalMinutes <= TollIntervalMinutes;
     }
 }
