@@ -1,6 +1,8 @@
-﻿namespace VehicleToll.Core.Application.Dates.Holidays;
+﻿using VehicleToll.Core.Application.Dates.Holidays.DTOs;
+
+namespace VehicleToll.Core.Application.Dates.Holidays;
 
 public interface IHolidayFileParser
 {
-    public List<YearHolidays> ReadData(string directory);
+    public List<YearHolidaysDTO> ReadData(string directory);
 }
