@@ -14,14 +14,14 @@ public class DateRangeFee
         new DateRangeFee(new TimeSpan(17, 0, 0), new TimeSpan(18, 0, 0), 13),
         new DateRangeFee(new TimeSpan(18, 0, 0), new TimeSpan(18, 30, 0), 8)
     ];
-    
+
     public DateRangeFee(TimeSpan start, TimeSpan end, int fee)
     {
         Start = start;
         End = end;
         Fee = fee;
     }
-    
+
     public TimeSpan Start { get; }
     public TimeSpan End { get; }
     public int Fee { get; }

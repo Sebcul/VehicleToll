@@ -6,7 +6,7 @@ public class YearHolidaysDTO
 {
     [JsonPropertyName("year")]
     public int Year { get; set; }
-    
+
     [JsonPropertyName("dates")]
     public List<HolidayDTO> Dates { get; set; }
 }

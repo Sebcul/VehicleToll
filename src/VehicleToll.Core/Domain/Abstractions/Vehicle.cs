@@ -20,7 +20,7 @@ public abstract class Vehicle : IVehicle
     }
 
     public string Type { get; set; }
-    
+
     public string GetVehicleType() => Type;
 
     public bool IsTollFree() => _tollFreeVehicles.Contains(Type);

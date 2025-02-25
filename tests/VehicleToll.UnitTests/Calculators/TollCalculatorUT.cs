@@ -16,7 +16,7 @@ public class TollCalculatorUT
     private readonly TollCalculator _sutCalculator;
     public static IEnumerable<object[]> TollFreeVehicles = InlineData.TollFreeVehicles;
     private readonly int _year = 2025;
-    
+
     public TollCalculatorUT()
     {
         var holidayServiceMock = new Mock<IHolidayService>();
@@ -92,7 +92,7 @@ public class TollCalculatorUT
         // Assert
         Assert.Equal(0, fee);
     }
-    
+
     [Theory]
     [InlineData(1, 1)]
     [InlineData(1, 6)]
@@ -111,7 +111,7 @@ public class TollCalculatorUT
         // Assert
         Assert.Equal(0, fee);
     }
-    
+
     [Fact]
     public void GetTollFee_DateTime_Should_ReturnZeroForTollFreeMonth()
     {
@@ -142,7 +142,7 @@ public class TollCalculatorUT
         // Assert
         Assert.Equal(13, fee);
     }
-    
+
     [Fact]
     public void GetTollFee_Daily_ShouldNot_GroupTollFeesOver60Minutes()
     {

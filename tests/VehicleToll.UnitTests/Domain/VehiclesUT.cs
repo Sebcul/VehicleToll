@@ -15,13 +15,13 @@ public class VehiclesUT
     {
         Assert.True(vehicle.IsTollFree());
     }
-    
+
     [Fact]
     public void IsTollFree_Should_ReturnFalseWhenVehicleIsNotOfTollFreeType()
     {
         //Arrange
         var vehicle = new Car();
-        
+
         //Act, Assert
         Assert.False(vehicle.IsTollFree());
     }

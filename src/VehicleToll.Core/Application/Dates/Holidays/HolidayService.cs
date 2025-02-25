@@ -21,7 +21,7 @@ public class HolidayService : IHolidayService
                     .Select(h => DateTime.ParseExact(h.Date, "yyyy-MM-dd", CultureInfo.InvariantCulture))
                     .ToList();
         }
-        
+
         return [];
     }
 }

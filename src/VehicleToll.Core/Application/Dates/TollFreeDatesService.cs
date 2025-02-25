@@ -11,7 +11,7 @@ public class TollFreeDatesService : ITollFreeDatesService
     {
         _holidayService = holidayService;
     }
-    
+
     public bool IsTollFreeDate(DateTime date)
     {
         if (date.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday || date.Month == (int)Months.July)
