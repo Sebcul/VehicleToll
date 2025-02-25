@@ -1,6 +1,6 @@
 ﻿using VehicleToll.Core.Application.Dates;
 using VehicleToll.Core.Domain;
-using VehicleToll.Core.Domain.Interfaces;
+using VehicleToll.Core.Domain.Abstractions;
 
 namespace VehicleToll.Core.Application.Calculators;
 
@@ -13,21 +13,11 @@ public class TollCalculator
 * @param dates   - date and time of all passes on one day
 * @return - the total toll fee for that day
 */
-    private readonly string[] _tollFreeVehicles =
-    [
-        VehicleTypeConstants.Motorbike,
-        VehicleTypeConstants.Tractor,
-        VehicleTypeConstants.Diplomat,
-        VehicleTypeConstants.Emergency,
-        VehicleTypeConstants.Military,
-        VehicleTypeConstants.Foreign
-    ];
-
     public int GetTollFee(IVehicle vehicle, DateTime[] dates)
     {
         var intervalStart = dates[0];
         var totalFee = 0;
-        foreach (DateTime date in dates)
+        foreach (var date in dates)
         {
             int nextFee = GetTollFee(vehicle, date);
             int tempFee = GetTollFee(vehicle, intervalStart);
@@ -52,24 +42,13 @@ public class TollCalculator
 
     public int GetTollFee(IVehicle vehicle, DateTime date)
     {
-        if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle))
+        if (IsTollFreeDate(date) || vehicle.IsTollFree())
         {
             return 0;
         }
 
         var dateRangeFee = DateRangeFee.TollFeeRanges.FirstOrDefault(x => x.Contains(date.TimeOfDay));
         return dateRangeFee?.Fee ?? 0;
-    }
-
-
-    private bool IsTollFreeVehicle(IVehicle vehicle)
-    {
-        if (vehicle == null)
-        {
-            return false;
-        }
-
-        return _tollFreeVehicles.Contains(vehicle.GetVehicleType());
     }
 
     private bool IsTollFreeDate(DateTime date)

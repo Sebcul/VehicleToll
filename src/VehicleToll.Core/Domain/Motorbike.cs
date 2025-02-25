@@ -1,11 +1,11 @@
-﻿using VehicleToll.Core.Domain.Interfaces;
+﻿using VehicleToll.Core.Domain.Abstractions;
 
 namespace VehicleToll.Core.Domain;
 
-public class Motorbike : IVehicle
+public class Motorbike : Vehicle
 {
-    public string GetVehicleType()
+    public Motorbike()
     {
-        return VehicleTypeConstants.Motorbike;
+        Type = VehicleTypeConstants.Motorbike;
     }
 }

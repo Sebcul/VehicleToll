@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using VehicleToll.Core.Application.Calculators;
 using VehicleToll.Core.Domain;
-using VehicleToll.Core.Domain.Interfaces;
+using VehicleToll.Core.Domain.Abstractions;
 using VehicleToll.UnitTests.Common;
 
 namespace VehicleToll.UnitTests.Calculators;

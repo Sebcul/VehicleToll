@@ -1,15 +1,11 @@
-﻿using VehicleToll.Core.Domain.Interfaces;
+﻿using VehicleToll.Core.Domain.Abstractions;
 
 namespace VehicleToll.UnitTests.Common;
 
-public class FakeVehicle : IVehicle
+public class FakeVehicle : Vehicle
 {
-    private readonly string _vehicleType;
-
     public FakeVehicle(string vehicleType)
     {
-        _vehicleType = vehicleType;
+        Type = vehicleType;
     }
-
-    public string GetVehicleType() => _vehicleType;
 }
