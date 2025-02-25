@@ -142,7 +142,7 @@ public class TollCalculatorUT
         // Assert
         Assert.Equal(13, fee);
     }
-    
+
     [Fact]
     public void GetTollFee_Daily_Should_GroupTollFeesWithin60MinutesForAllDay()
     {

@@ -76,7 +76,7 @@ public class TollCalculator
         var dateRangeFee = DateRangeFee.TollFeeRanges.FirstOrDefault(x => x.Contains(date.TimeOfDay));
         return dateRangeFee?.Fee ?? 0;
     }
-    
+
     private static bool IsIn60MinutesInterval(DateTime intervalStart, DateTime date)
     {
         return (date - intervalStart).TotalMinutes <= TollIntervalMinutes;
