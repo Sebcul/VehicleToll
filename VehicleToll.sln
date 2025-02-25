@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DBCAA26B-76B4-42F2-8D19-574A103181B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2F6AC50F-B5C9-4D21-8306-57C9AF53823B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleToll.Core", "src\VehicleToll.Core\VehicleToll.Core.csproj", "{F989CDDD-CCC7-4073-820B-CBAB3F59ADE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleToll.UnitTests", "VehicleToll.UnitTests\VehicleToll.UnitTests.csproj", "{F7E1ECB6-BF6C-4615-B0C5-901034BB2BB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F989CDDD-CCC7-4073-820B-CBAB3F59ADE5} = {DBCAA26B-76B4-42F2-8D19-574A103181B7}
+		{F7E1ECB6-BF6C-4615-B0C5-901034BB2BB6} = {2F6AC50F-B5C9-4D21-8306-57C9AF53823B}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F989CDDD-CCC7-4073-820B-CBAB3F59ADE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F989CDDD-CCC7-4073-820B-CBAB3F59ADE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F989CDDD-CCC7-4073-820B-CBAB3F59ADE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F989CDDD-CCC7-4073-820B-CBAB3F59ADE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7E1ECB6-BF6C-4615-B0C5-901034BB2BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7E1ECB6-BF6C-4615-B0C5-901034BB2BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7E1ECB6-BF6C-4615-B0C5-901034BB2BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7E1ECB6-BF6C-4615-B0C5-901034BB2BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
