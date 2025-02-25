@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using VehicleToll.Core.Application.Dates;
+﻿using VehicleToll.Core.Application.Dates;
 using VehicleToll.Core.Domain.Abstractions;
 
 namespace VehicleToll.Core.Application.Calculators;
