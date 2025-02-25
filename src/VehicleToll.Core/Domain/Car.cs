@@ -4,8 +4,5 @@ namespace VehicleToll.Core.Domain;
 
 public class Car : Vehicle
 {
-    public Car()
-    {
-        Type = VehicleTypeConstants.Car;
-    }
+    public Car() : base(VehicleTypeConstants.Car) { }
 }

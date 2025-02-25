@@ -4,7 +4,7 @@ namespace VehicleToll.Core.Domain.Abstractions;
 
 public abstract class Vehicle : IVehicle
 {
-    protected readonly string[] TollFreeVehicles =
+    private readonly string[] _tollFreeVehicles =
     [
         VehicleTypeConstants.Motorbike,
         VehicleTypeConstants.Tractor,
@@ -14,9 +14,14 @@ public abstract class Vehicle : IVehicle
         VehicleTypeConstants.Foreign
     ];
 
+    protected Vehicle(string type)
+    {
+        Type = type;
+    }
+
     public string Type { get; set; }
     
     public string GetVehicleType() => Type;
 
-    public bool IsTollFree() => TollFreeVehicles.Contains(Type);
+    public bool IsTollFree() => _tollFreeVehicles.Contains(Type);
 }

@@ -9,20 +9,9 @@ namespace VehicleToll.UnitTests.Calculators;
 
 public class TollCalculatorUT
 {
-
     private readonly TollCalculator _sutCalculator;
-
-    public static IEnumerable<object[]> TollFreeVehiclesInlineData =>
-        new List<IVehicle[]>
-        {
-            new IVehicle[] { new Motorbike() },
-            new IVehicle[] { new FakeVehicle(VehicleTypeConstants.Diplomat) },
-            new IVehicle[] { new FakeVehicle(VehicleTypeConstants.Emergency) },
-            new IVehicle[] { new FakeVehicle(VehicleTypeConstants.Foreign) },
-            new IVehicle[] { new FakeVehicle(VehicleTypeConstants.Military) },
-            new IVehicle[] { new FakeVehicle(VehicleTypeConstants.Tractor) }
-        };
-
+    public static IEnumerable<object[]> TollFreeVehicles = Data.TollFreeVehicles;
+    
     public TollCalculatorUT()
     {
         _sutCalculator = new TollCalculator();
@@ -55,7 +44,7 @@ public class TollCalculatorUT
     }
 
     [Theory]
-    [MemberData(nameof(TollFreeVehiclesInlineData))]
+    [MemberData(nameof(TollFreeVehicles))]
     public void GetTollFee_DateTime_Should_ReturnZeroForTollFreeVehicle(IVehicle vehicle)
     {
         // Arrange

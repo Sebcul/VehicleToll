@@ -4,8 +4,5 @@ namespace VehicleToll.Core.Domain;
 
 public class Motorbike : Vehicle
 {
-    public Motorbike()
-    {
-        Type = VehicleTypeConstants.Motorbike;
-    }
+    public Motorbike() : base(VehicleTypeConstants.Motorbike) { }
 }
