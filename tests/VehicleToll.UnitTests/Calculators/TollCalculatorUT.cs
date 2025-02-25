@@ -95,6 +95,20 @@ public class TollCalculatorUT
         // Assert
         Assert.Equal(0, fee);
     }
+    
+    [Fact]
+    public void GetTollFee_DateTime_Should_ReturnZeroForTollFreeMonth()
+    {
+        // Arrange
+        var vehicle = new Car();
+        var testDate = new DateTime(2025, 7, 10, 10, 0, 0);
+
+        // Act
+        var fee = _sutCalculator.GetTollFee(testDate, vehicle);
+
+        // Assert
+        Assert.Equal(0, fee);
+    }
 
     [Fact]
     public void GetTollFee_Daily_Should_GroupTollFeesWithin60Minutes()

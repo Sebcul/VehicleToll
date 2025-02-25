@@ -78,7 +78,7 @@ public class TollCalculator
         var month = date.Month;
         var day = date.Day;
 
-        if (date.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday)
+        if (date.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday || date.Month == (int)Months.July)
         {
             return true;
         }
