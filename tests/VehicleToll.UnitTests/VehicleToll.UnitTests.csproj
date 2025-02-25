@@ -24,4 +24,8 @@
       <Folder Include="Domain\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\VehicleToll.Core\VehicleToll.Core.csproj" />
+    </ItemGroup>
+
 </Project>
