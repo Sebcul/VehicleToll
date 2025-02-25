@@ -1,6 +1,4 @@
 ﻿using VehicleToll.Core.Application.Dates;
-using VehicleToll.Core.Application.Dates.Holidays;
-using VehicleToll.Core.Domain;
 using VehicleToll.Core.Domain.Abstractions;
 
 namespace VehicleToll.Core.Application.Calculators;
