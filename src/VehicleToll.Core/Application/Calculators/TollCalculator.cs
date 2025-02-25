@@ -1,4 +1,5 @@
 ﻿using VehicleToll.Core.Application.Dates;
+using VehicleToll.Core.Application.Dates.Holidays;
 using VehicleToll.Core.Domain;
 using VehicleToll.Core.Domain.Abstractions;
 
@@ -6,13 +7,14 @@ namespace VehicleToll.Core.Application.Calculators;
 
 public class TollCalculator
 {
-    /**
-* Calculate the total toll fee for one day
-*
-* @param vehicle - the vehicle
-* @param dates   - date and time of all passes on one day
-* @return - the total toll fee for that day
-*/
+    private readonly IHolidayService _holidayService;
+
+    //TODO: Implement holidayService instead of checking dates manually in IsTollFreeDate(DateTime date) method
+    public TollCalculator(IHolidayService holidayService)
+    {
+        _holidayService = holidayService;
+    }
+    
     public int GetTollFee(IVehicle vehicle, DateTime[] dates)
     {
         var intervalStart = dates[0];
@@ -61,7 +63,7 @@ public class TollCalculator
         {
             return true;
         }
-
+        
         if (year == 2013)
         {
             if (month == 1 && day == 1 ||

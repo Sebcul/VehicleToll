@@ -7,4 +7,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Update="Application\Dates\Holidays\swedish_holidays.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+          <TargetPath>swedish_holidays.json</TargetPath>
+      </None>
+    </ItemGroup>
+
 </Project>

@@ -7,7 +7,7 @@ namespace VehicleToll.UnitTests.Domain;
 
 public class VehiclesUT
 {
-    public static IEnumerable<object[]> TollFreeVehicles = Data.TollFreeVehicles;
+    public static IEnumerable<object[]> TollFreeVehicles = InlineData.TollFreeVehicles;
 
     [Theory]
     [MemberData(nameof(TollFreeVehicles))]
