@@ -48,7 +48,7 @@ public class TollCalculatorUT
         var testDate = new DateTime(2023, 1, 10, hour, minute, 0);
 
         // Act
-        var fee = _sutCalculator.GetTollFee(testDate, vehicle);
+        var fee = _sutCalculator.GetTollFee(vehicle, testDate);
 
         // Assert
         Assert.Equal(expectedFee, fee);
@@ -62,7 +62,7 @@ public class TollCalculatorUT
         var testDate = new DateTime(2023, 1, 10, 8, 0, 0);
 
         // Act
-        var fee = _sutCalculator.GetTollFee(testDate, vehicle);
+        var fee = _sutCalculator.GetTollFee(vehicle, testDate);
 
         // Assert
         Assert.Equal(0, fee);
@@ -76,7 +76,7 @@ public class TollCalculatorUT
         var testDate = new DateTime(2025, 3, 2, 10, 0, 0);
 
         // Act
-        var fee = _sutCalculator.GetTollFee(testDate, vehicle);
+        var fee = _sutCalculator.GetTollFee(vehicle, testDate);
 
         // Assert
         Assert.Equal(0, fee);
@@ -90,7 +90,7 @@ public class TollCalculatorUT
         var testDate = new DateTime(2025, 3, 1, 10, 0, 0);
 
         // Act
-        var fee = _sutCalculator.GetTollFee(testDate, vehicle);
+        var fee = _sutCalculator.GetTollFee(vehicle, testDate);
 
         // Assert
         Assert.Equal(0, fee);
@@ -104,7 +104,7 @@ public class TollCalculatorUT
         var testDate = new DateTime(2025, 7, 10, 10, 0, 0);
 
         // Act
-        var fee = _sutCalculator.GetTollFee(testDate, vehicle);
+        var fee = _sutCalculator.GetTollFee(vehicle, testDate);
 
         // Assert
         Assert.Equal(0, fee);
@@ -125,6 +125,23 @@ public class TollCalculatorUT
 
         // Assert
         Assert.Equal(13, fee);
+    }
+    
+    [Fact]
+    public void GetTollFee_Daily_ShouldNot_GroupTollFeesOver60Minutes()
+    {
+        // Arrange
+        var vehicle = new Car();
+
+        var date1 = new DateTime(2023, 1, 10, 6, 15, 0, 0);
+        var date2 = new DateTime(2023, 1, 10, 8, 45, 0, 0);
+        var dates = new[] { date1, date2 };
+
+        // Act
+        var fee = _sutCalculator.GetTollFee(vehicle, dates);
+
+        // Assert
+        Assert.Equal(16, fee);
     }
 
     [Fact]
