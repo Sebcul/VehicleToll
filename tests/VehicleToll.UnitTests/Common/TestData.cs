@@ -19,7 +19,6 @@ public static class InlineData
         };
 }
 
-
 public static class Data
 {
     public static IEnumerable<DateTime> Holidays2025 =>
