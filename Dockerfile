@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS sdk
 
 WORKDIR /build/
-COPY nuget.config .
 COPY . /build/
 
 RUN dotnet restore --locked-mode -r linux-x64
