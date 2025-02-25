@@ -6,6 +6,6 @@ public class Car : IVehicle
 {
     public string GetVehicleType()
     {
-        throw new NotImplementedException();
+        return VehicleTypeConstants.Car;
     }
 }
