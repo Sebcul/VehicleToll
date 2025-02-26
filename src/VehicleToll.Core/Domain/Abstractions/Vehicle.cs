@@ -19,7 +19,7 @@ public abstract class Vehicle : IVehicle
         Type = type;
     }
 
-    public string Type { get; set; }
+    public string Type { get; }
 
     public string GetVehicleType() => Type;
 
