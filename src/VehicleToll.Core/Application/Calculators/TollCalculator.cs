@@ -1,5 +1,5 @@
 ﻿using VehicleToll.Core.Application.Dates;
-using VehicleToll.Core.Domain.Abstractions;
+using VehicleToll.Core.Domain;
 
 namespace VehicleToll.Core.Application.Calculators;
 
@@ -15,7 +15,7 @@ public class TollCalculator
         _tollFreeDatesService = tollFreeDatesService;
     }
 
-    public int GetTollFee(IVehicle vehicle, DateTime[] dates)
+    public int GetTollFee(Vehicle vehicle, DateTime[] dates)
     {
         if (dates.Length == 0)
         {
@@ -65,7 +65,7 @@ public class TollCalculator
         return dailyFee > DailyMaxFee ? DailyMaxFee : dailyFee;
     }
 
-    public int GetTollFee(IVehicle vehicle, DateTime date)
+    public int GetTollFee(Vehicle vehicle, DateTime date)
     {
         if (_tollFreeDatesService.IsTollFreeDate(date) || vehicle.IsTollFree())
         {

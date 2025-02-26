@@ -6,8 +6,8 @@ using VehicleToll.Core.Application.Calculators;
 using VehicleToll.Core.Application.Dates;
 using VehicleToll.Core.Application.Dates.Holidays;
 using VehicleToll.Core.Domain;
-using VehicleToll.Core.Domain.Abstractions;
 using VehicleToll.UnitTests.Common;
+using VehicleToll.UnitTests.Domain;
 
 namespace VehicleToll.UnitTests.Calculators;
 
@@ -53,7 +53,7 @@ public class TollCalculatorUT
 
     [Theory]
     [MemberData(nameof(TollFreeVehicles))]
-    public void GetTollFee_DateTime_Should_ReturnZeroForTollFreeVehicle(IVehicle vehicle)
+    public void GetTollFee_DateTime_Should_ReturnZeroForTollFreeVehicle(Vehicle vehicle)
     {
         // Arrange
         var testDate = new DateTime(_year, 1, 10, 8, 0, 0);

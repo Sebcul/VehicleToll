@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using VehicleToll.Core.Domain;
-using VehicleToll.Core.Domain.Abstractions;
 using VehicleToll.UnitTests.Common;
 
 namespace VehicleToll.UnitTests.Domain;
@@ -11,7 +10,7 @@ public class VehiclesUT
 
     [Theory]
     [MemberData(nameof(TollFreeVehicles))]
-    public void IsTollFree_Should_ReturnTrueWhenVehicleIsOfTollFreeType(IVehicle vehicle)
+    public void IsTollFree_Should_ReturnTrueWhenVehicleIsOfTollFreeType(Vehicle vehicle)
     {
         Assert.True(vehicle.IsTollFree());
     }

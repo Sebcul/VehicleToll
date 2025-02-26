@@ -1,4 +1,4 @@
-﻿using VehicleToll.Core.Domain.Abstractions;
+﻿using VehicleToll.Core.Domain;
 
 namespace VehicleToll.Core.Domain;
 

@@ -1,8 +1,6 @@
-﻿using VehicleToll.Core.Domain.Abstractions;
+﻿namespace VehicleToll.Core.Domain;
 
-namespace VehicleToll.Core.Domain.Abstractions;
-
-public abstract class Vehicle : IVehicle
+public abstract class Vehicle
 {
     private readonly string[] _tollFreeVehicles =
     [
@@ -20,8 +18,6 @@ public abstract class Vehicle : IVehicle
     }
 
     public string Type { get; }
-
-    public string GetVehicleType() => Type;
 
     public bool IsTollFree() => _tollFreeVehicles.Contains(Type);
 }

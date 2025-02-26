@@ -1,6 +1,4 @@
-﻿using VehicleToll.Core.Domain.Abstractions;
-
-namespace VehicleToll.Core.Domain;
+﻿namespace VehicleToll.Core.Domain;
 
 public class Car : Vehicle
 {
